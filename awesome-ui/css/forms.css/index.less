@@ -1,0 +1,380 @@
+@white:                                        #fff;
+@colors--black:                                inherit;
+@colors--transparent:                          transparent;
+
+@forms--input--color:                          @colors--black;
+@forms--input--background-color:               darken(@white, 5%);
+
+@forms--input-hovered--color:                  @colors--black;
+@forms--input-hovered--background-color:       ThreeDHighlight;
+
+@forms--input-focused--color:                  @colors--black;
+@forms--input-focused--background-color:       #fff;
+
+h1, h2, h3, h4, h5, h6 {
+    margin:1em 2em;
+}
+hr {
+    margin:3em 0;
+    border:0; border-top:0.1em solid darken(@white, 30%);
+}
+
+.b-btn, input, textarea, label, button {
+    display:inline-block; box-sizing:content-box;
+    width:auto; min-width:2.5em;
+    height:auto; min-height:2.5em;
+    margin:0.5em 0;
+    padding:0.5em 0.8em;
+    border:0;
+    font:inherit; line-height:1.5em;
+    text-align:left;
+}
+
+.b-btn, button {
+    padding:0.5em 1em;
+    background-color:ThreeDFace;
+    box-shadow:0 0 0 0.1em ThreeDLightShadow;
+    & + button {
+        margin-left:0.5em;
+    }
+    &:hover {
+        background-color:ThreeDShadow;
+        color:ButtonHighlight;
+    }
+    &:active {
+        background-color:ThreeDDarkShadow;
+        color:ButtonHighlight;
+    }
+}
+
+.caret {
+    position:absolute; top:50%; left:50%;
+    display:block; width:0; height:0;
+    margin:0;
+    margin-top:-0.15em;
+    margin-left:-0.3em;
+    content:'';
+    border-top: 0.3em solid #777;
+    border-right: 0.3em solid transparent;
+    border-left: 0.3em solid transparent;
+}
+
+.b-btn-primary, button[type=submit] {
+    background-color:Highlight;
+    color:HighlightText;
+    .caret {
+        border-top:0.3em solid HighlightText;
+    }
+    &:hover {
+        background-color:ThreeDShadow;
+    }
+    &:active {
+        background-color:ThreeDDarkShadow;
+        color:ButtonHighlight;
+    }
+}
+
+.b-btn-text, button[type=clear], button[rel=menu] {
+    &, &:hover, &:active {
+        background:transparent;
+    }
+}
+.b-btn-caret {
+    position:relative;
+}
+
+input, textarea {
+    padding:0.85em 1em;
+    background:@forms--input--background-color;
+    border:0; outline:none;
+    color:@forms--input--color;
+    cursor:default;
+    &:hover {
+        background-color:@forms--input-hovered--background-color;
+        color:@forms--input-hovered--color;
+    }
+    &:focus {
+        background-color:@forms--input-focused--background-color;
+        color:@forms--input-focused--color;
+        cursor:initial;
+    }
+    & + input {
+        margin-left:0.5em;
+    }
+}
+textarea {
+    line-height:150%;
+    padding:0.75em 1em;
+}
+label {
+    display:block;
+    width:auto; height:auto;
+    & > span {
+        padding:0 1em;
+    }
+    input, textarea {
+        display:block; box-sizing:border-box;
+        width:auto;
+        margin:0;
+    }
+}
+form {
+    display:block; overflow:visible;
+    margin:2em 1em; padding:0;
+    input, textarea {
+        display:block; box-sizing:border-box;
+        width:100%;
+        margin:0.8em 0;
+        &:hover {
+
+        }
+        &:focus {
+
+        }
+    }
+    label {
+        input, textarea {
+            margin:0; margin-top:0.5em;
+        }
+    }
+    hr {
+    }
+    legend {
+        margin:0.8em 0;
+        display:block; font-size:2em;
+        margin:0.5em 0.45em 1em; padding:0;
+    }
+    fieldset {
+        display:block;
+        margin:2em 0;
+        padding:0;
+        border:0;
+        legend {
+            font-size:1.4em; margin:1.4em 0.7em;
+        }
+    }
+    button {
+        padding:0.8em 1em;
+        text-align:center;
+        & + button {
+            margin-left:0.8em;
+        }
+    }
+}
+
+.b-well {
+    padding:1em;
+    background:darken(@white, 5%);
+    box-shadow:inset 0 0 0 0.1em darken(@white, 30%), inset 0 0 0 0.35em darken(@white, 1%), 0 0 0.5em -0.2em;
+    & > form {
+        margin:1em 0;
+        input, textarea, label {
+            margin:0.8em 0;
+        }
+        input, textarea {
+            border-radius:0;
+            box-shadow:inset 0 0 0 0.1em darken(@white, 15%), 0 0 0 0.3em darken(@white, 1%);
+        }
+    }
+}
+
+/*/
+ * Ф О Р М А
+ */
+.b-form {
+    &--fieldset {
+    }
+    &--legend {
+    }
+    &--control {
+    }
+    &--actions {
+        padding:0.8em;
+        background:darken(@white, 10%);
+        border-top:0.1em solid darken(@white, 15%);
+        button {
+            margin-top:0; margin-bottom:0;
+        }
+        button[type=submit] {
+            padding:0.8em 3em;
+        }
+        button[type=clear] {
+            float:right;
+        }
+    }
+}
+
+.b-control {
+    form {
+        margin:0;
+    }
+    margin:0.5em;
+    //box-shadow:inset 0 0 0 0.1em darken(@white, 15%);
+    &:hover {
+        background-color:ThreeDFace;
+    }
+    &--label, &--input {
+        display:block; box-sizing:border-box;
+        width:100%;
+        padding:0.5em 0.8em;
+        font:inherit; line-height:1.5em;
+    }
+    &--label {
+        padding-left:1.5em;
+    }
+    &--input {
+        &s {
+            position:relative;
+            margin:0.5em;
+            box-shadow: 0 0 0 0.1em ThreeDLightShadow, 0 0 0 0.5em ThreeDFace;
+        }
+        &-append {
+            position:absolute;
+            top:-0.5em; left:auto; right:0;
+            .b-btn {
+                display:inline-block; box-sizing:border-box;
+                margin:0.5em 0;
+                &-caret {
+                    background:transparent;
+                    box-shadow:none;
+                    &:hover {
+                        background-color:ThreeDHighlight;
+                    }
+                    &:active {
+                        background-color:ThreeDDarkShadow;
+                        color:ButtonHighlight;
+                    }
+                }
+            }
+        }
+        margin:0;
+    }
+    //&, &--label, &--input, &--inputs {
+    //    display:block;
+    //    padding:0; line-height:150%;
+    //}
+    //width:100%;
+    //&--label {
+    //    width:25%; float:left;
+    //    a {
+    //        display:block;
+    //        padding:0.85em 1em;
+    //    }
+    //}
+    //&--input, &--inputs {
+    //    width:75%;
+    //    input {
+    //        display:block;
+    //        padding:0.85em 1em;
+    //    }
+    //}
+    //&--input {
+    //    &s{
+    //        position:relative;
+    //        display:table;
+    //        input {
+    //            display:table-cell;
+    //            width:auto;
+    //        }
+    //        button {
+    //            position:absolute; top:0; right:0; left:auto;
+    //            display:block; width:auto; 
+    //        }
+    //    }
+    //}
+    white-space:nowrap;
+}
+
+/*/
+ * Б О Г А Т Ы Е  К О Н Т Р О Л Ы
+ */
+.b-rich {
+
+    /*/
+     * Ф О Р М А
+     */
+    &--form {
+
+        /*/
+         * стиль формы
+         */
+        .b-form {
+            &--fieldset {
+            }
+            &--legend {
+            }
+            &--control {
+            }
+            &--actions {
+            }
+        }
+    }
+
+    /*/
+     * К О Н Т Р О Л
+     */
+    &--control {
+
+        /*/
+         * стиль контролов
+         */
+        .b-control, .b-ctrl {
+            &--actions {
+            }
+        }
+
+        /*/
+         * стиль кнопок
+         */
+        .b-button, .b-btn {
+            &--actions {
+            }
+        }
+    }
+}
+
+table {
+    border-collapse:separate;
+    border-spacing:0;
+}
+
+.b-calendar {
+    & > table {
+        border-collapse:separate;
+        border-spacing:0.3em;
+        font-size:80%;
+        text-align:center;
+        & > thead {
+            & > tr {
+                & > td {
+                    color:darken(white, 15%);
+                }
+            }
+        }
+        & > tbody {
+            & > tr {
+                & > td {
+                    min-width:3em;
+                    padding:1em 0;
+                    background:darken(white, 10%);
+                    box-shadow:inset 0 0 0 0.1em darken(white, 15%);
+                    line-height:1em;
+                    color:white;
+                    cursor:default;
+                    &:hover {
+                        color:darken(white, 62%);
+                        background:darken(white, 5%);
+
+                    }
+                }
+                & > th {
+                    padding-left:0.8em;
+                    color:darken(white, 15%);
+                }
+            }
+        }
+    }
+    &.b-well > table {
+        margin-top:-1em;
+    }
+}
