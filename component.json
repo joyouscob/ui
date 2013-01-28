@@ -1,7 +1,4 @@
 {
-    "name": "awesome-ui",
-    "verison" : "0.0.1",
-    "dependencies": {
-        "jquery": "~1.8.0"
-    }
+  "name": "awesome-ui",
+  "version": "0.0.1"
 }
