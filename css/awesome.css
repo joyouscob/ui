@@ -571,12 +571,10 @@ a:hover .u {
 .b-page--header {
   width: 100%;
   min-height: 4em;
-  background: white;
 }
 .b-page--footer {
   width: 100%;
   min-height: 1em;
-  background: white;
 }
 .b-page--sections {
   /* Группа разделов */
@@ -696,7 +694,7 @@ a:hover .u {
 
 }
 .awesome .b-app--header {
-  background: #ffffff;
+  background: #f2f2f2;
   -webkit-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.5);
@@ -740,7 +738,7 @@ a:hover .u {
   right: -1em;
 }
 .awesome .b-app--footer {
-  background: #ffffff;
+  background: #f2f2f2;
   -webkit-box-shadow: 0 0 3px -1px #000000;
   -moz-box-shadow: 0 0 3px -1px #000000;
   box-shadow: 0 0 3px -1px #000000;
@@ -754,12 +752,12 @@ a:hover .u {
   margin-left: 0.2em;
 }
 .awesome .b-app--view {
-  background: #f2f2f2;
+  background: #ffffff;
   -webkit-box-shadow: inset 0 1px 3px -2px #000000;
   -moz-box-shadow: inset 0 1px 3px -2px #000000;
   box-shadow: inset 0 1px 3px -2px #000000;
 }
-.awesome .b-page {
+.awesome .b-page--header {
   background: #f2f2f2;
 }
 .awesome .b-page--nav-bar {
@@ -806,6 +804,9 @@ a:hover .u {
 .awesome .b-page--section > article {
   padding: 0;
 }
+.awesome .b-page--footer {
+  background: #f2f2f2;
+}
 @media screen and (min-width: 480px) {
   .awesome .b-page--section {
     padding: 2em;
@@ -829,7 +830,7 @@ a:hover .u {
   }
 }
 .awesome-page--header hgroup {
-  margin: 10% 15%;
+  padding: 10% 15%;
   font-family: 'segoe ui light', 'ubuntu', arial, sans-serif;
   font-size: 3em;
   font-weight: 300;
