@@ -1,207 +1,3 @@
-@import "variables.less";
-
-@gridColumns:             12;
-@gridColumnWidth:         80px;
-@gridGutterWidth:         0;
-@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
-
-@fluidGridColumnWidth:    percentage(@gridColumnWidth/@gridRowWidth);
-@fluidGridGutterWidth:    percentage(@gridGutterWidth/@gridRowWidth);
-
-body {
-    font-size:13px; line-height:150%;
-}
-
-a {
-    text-decoration:none;
-    color:#4183C4; //hsl(210,53%,51%);
-    -webkit-transition:color 0.1s ease;
-    .u {
-        display:inline-block; line-height:120%;
-        text-decoration:none;
-        border-bottom:1px solid rgba(65, 131, 196, 0.38); -webkit-transition:border-bottom 0.1s ease;
-    }
-    &[data-toggle] {
-        .u {
-            border-bottom-style:dashed;
-        }
-    }
-    &:focus, &:hover {
-        color:#354F69; //hsl(210,33%,31%);
-        outline:none;
-        -webkit-transition:color 0.1s ease;
-        .u {
-            border-bottom-color:rgba(53, 79, 105, 0.62); -webkit-transition:border-bottom 0.1s ease;
-        }
-    }
-}
-
-// https://github.com/h5bp/mobile-boilerplate/wiki/Mobile-Matrices
-// http://gs.statcounter.com/#resolution-ww-monthly-200903-201212
-
-.display {
-    &-tablet {
-        &, &-block, &-inline-block, &-inline {
-            display:none;
-        }
-    }
-    &-desktop, &-desktop-wide, &-wide {
-        &, &-block, &-inline-block, &-inline {
-            display:none;
-        }
-    }
-}
-
-/*/
- * Tablet (480px →)
- */
-@media-tablet--min-width: 480px;
-@media-tablet--screen-min-width:(
-    @media-tablet--min-width
-);
-@media screen and (min-width:@media-tablet--screen-min-width) {
-
-    .display {
-        &-tablet {
-            & {
-                display:inherit;
-            }
-            &-block {
-                display:block;
-            }
-            &-inline-block {
-                display:inline-block;
-            }
-            &-inline {
-                display:inline;
-            }
-            &-none {
-                display:none;
-            }
-        }
-    }
-
-    body {
-        font-size:11px;
-    }
-
-}
-
-@media-desktop--screen-offset: -64px;
-
-/*/
- * desktop (1024 →)
- */
-@media-desktop--min-width: 1024px;
-@media-desktop--screen-min-width:(
-    @media-desktop--min-width + @media-desktop--screen-offset
-);
-@media screen and (min-width:@media-desktop--screen-min-width) {
-
-    .display {
-        &-desktop {
-            & {
-                display:inherit;
-            }
-            &-block {
-                display:block;
-            }
-            &-inline-block {
-                display:inline-block;
-            }
-            &-inline {
-                display:inline;
-            }
-            &-none {
-                display:none;
-            }
-        }
-    }
-
-    body {
-        font-size:13px;
-    }
-    .responsive-tablet-span12 {
-        width:100% !important;
-    }
-
-}
-
-/*/
- * wide, desktop-wide (1440 →)
- */
-@media-desktop-wide--min-width: 1440px;
-@media-desktop-wide--screen-min-width:(
-    @media-desktop-wide--min-width + @media-desktop--screen-offset
-);
-@media screen and (min-width:@media-desktop-wide--screen-min-width) {
-
-    .display {
-        &-desktop-wide, &-wide {
-            & {
-                display:inherit;
-            }
-            &-block {
-                display:block;
-            }
-            &-inline-block {
-                display:inline-block;
-            }
-            &-inline {
-                display:inline;
-            }
-            &-none {
-                display:none;
-            }
-        }
-    }
-
-    body {
-        font-size:15px;
-    }
-
-}
-
-// Fluid (940px)
-#grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
-
-// Reset utility classes due to specificity
-[class*="span"].hide,
-.row-fluid [class*="span"].hide {
-  display: none;
-}
-
-[class*="span"].pull-right,
-.row-fluid [class*="span"].pull-right {
-  float: right;
-}
-
-.container-fluid {
-  padding-right: @gridGutterWidth;
-  padding-left: @gridGutterWidth;
-  .clearfix();
-}
-
-@media screen and (max-width:768px) {
-    .row-fluid {
-        [class*="span"]:not(.cell) {
-            display:block; .box-sizing(border-box);
-            width:100%;
-            margin-left:0;
-            float:none;
-        }
-    }
-    body {
-        font-size:13px;
-    }
-}
-
-/******************************************************/
-
-
-
-
-
 @b-app--padding-left: 2em;
 
 /*
@@ -237,7 +33,7 @@ a {
      */
     &--header {
         bottom:auto; z-index:5;
-        max-height:@b-app--header-height;
+        min-height:@b-app--header-height; height:@b-app--header-height; max-height:@b-app--header-height;
         & > header {
             display:block;
             font-size:@b-app--header-font-size; line-height:@b-app--header-line-height;
@@ -267,7 +63,7 @@ a {
      */
     &--footer {
         top:auto; bottom:0; z-index:3;
-        max-height:@b-app--footer-height;
+        min-height:@b-app--footer-height; height:@b-app--footer-height; max-height:@b-app--footer-height;
         & > footer {
             display:block;
             margin:0; padding:@b-app--footer-padding;
@@ -289,7 +85,7 @@ a {
      * Экран приложения
      */
     &--view {
-        top:0; bottom:0;
+        top:@b-app--header-height; bottom:@b-app--footer-height;
         z-index:1;
         overflow:scroll; overflow-x:auto;
     }
@@ -348,26 +144,47 @@ a {
 }
 
 .b-page {
-    position:static;
+
+    /*
+     * Хидер страницы
+     */
     &--header {
-        position:absolute;
-        width:100%; height:4em;
+        width:100%; min-height:4em;
         background:white;
-        & > header, hgroup {
-        
-        }
     }
-    &--body {
-        position:relative; top:4em;
+
+    /*
+     * футер страницы
+     */
+    &--footer {
+        width:100%; min-height:1em;
+        background:white;
     }
+
     &--nav {
-        position:absolute;
-        width:100%;
+
     }
+
+    /*
+     * Раздел на странице
+     */
     &--section {
-        & > section, article {
+
+        &s { /* Группа разделов */
+            
         }
     }
+
+    /*
+     * Статья на странице
+     */
+    &--article {
+
+        &s { /* Группа статей */
+            
+        }
+    }
+
 }
 
 .b-tabs {
@@ -495,13 +312,6 @@ a {
      * Раскладка приложения на Осоме
      */
     .b-app {
-
-        &--header, &--footer {
-            visibility:hidden;
-            &:hover {
-                visibility:visible;
-            }
-        }
 
         /*
          * Хидер Осома
