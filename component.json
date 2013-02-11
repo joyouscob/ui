@@ -4,6 +4,7 @@
   "main": "./css/awesome.css",
   "dependencies": {
     "bootstrap": "latest",
-    "angular": "latest"
+    "angular": "latest",
+    "CodeMirror": "git://github.com/marijnh/CodeMirror.git"
   }
 }

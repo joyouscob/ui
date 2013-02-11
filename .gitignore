@@ -1,6 +1,7 @@
 /components/jquery
 /components/bootstrap
 /components/angular
+/components/CodeMirror
 /node_modules
 
 ~*
