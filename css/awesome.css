@@ -529,11 +529,27 @@ a:hover .u {
   display: block;
   margin-right: 1.5em;
 }
-.b-nav--list {
+.b-nav--list,
+.b-nav--bar {
+  display: block;
   margin: 0;
-  padding: 1em 0.5em;
+  padding: 0;
   line-height: 2em;
   list-style: none;
+}
+.b-nav--list > li {
+  display: block;
+}
+.b-nav--list > li > a {
+  display: block;
+}
+.b-nav--bar > li {
+  display: inline-block;
+  margin-left: -2em;
+}
+.b-nav--bar > li > a {
+  display: block;
+  padding: 0.5em 2em;
 }
 .b-footer--img {
   float: right;
@@ -689,15 +705,20 @@ a:hover .u {
   margin: 0.5em 1em;
   font-size: 2em;
   line-height: 1em;
-  font-family: 'segoe ui light', 'ubuntu light', arial, sans-serif;
-  font-weight: 300;
+  font-family: 'segoe ui', 'ubuntu', arial, sans-serif;
+  font-weight: 400;
   color: #333;
   opacity: 0.9;
 }
-.awesome .b-header--title strong,
-.awesome .b-footer--title strong {
-  font-family: 'segoe ui', 'ubuntu', arial, sans-serif;
-  font-weight: 400;
+.awesome .b-nav--bar > li > a:hover {
+  color: #333;
+}
+.awesome .b-nav--bar > li.active > a {
+  color: #333;
+  font-weight: 600;
+}
+.awesome .b-nav--bar > li.active > a .u {
+  border-bottom-color: transparent;
 }
 .awesome a {
   font-weight: 400;
@@ -828,20 +849,65 @@ a:hover .u {
   top: 0.05em;
   border-bottom-color: transparent;
 }
-.awesome .b-page--section {
-  padding: 2em;
+.awesome .b-page--title {
+  padding: 10% 0;
+  font-family: 'segoe ui light', 'ubuntu light', arial, sans-serif;
+  font-size: 3em;
+  font-weight: 300;
+  white-space: nowrap;
 }
-.awesome .b-page--section > article {
-  padding: 0;
+.awesome .b-page--title h1,
+.awesome .b-page--title h2 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: inherit;
+  line-height: 1.2em;
+  color: #999;
+}
+.awesome .b-page--title h1 {
+  font-size: 1.12em;
+  color: #333;
+}
+.awesome .b-page--section {
+  margin-bottom: 5em;
+}
+.awesome .b-page--section hr {
+  margin: 1em;
+  border: 0;
+  border-top: 1px solid #e2e2e2;
 }
 .awesome .b-page--footer {
   background: #ffffff;
   box-shadow: 0 -1px 0px 0 #e2e2e2;
 }
+.awesome .b-section--title,
+.awesome .b-article--title {
+  margin: 0;
+  font-size: 3em;
+  font-family: 'segoe ui light', 'ubuntu light', arial, sans-serif;
+  font-weight: 300;
+  color: #999;
+  white-space: nowrap;
+}
+.awesome .b-article--header {
+  margin-top: 0.5em;
+}
+.awesome .b-article--header p {
+  margin-right: 2em;
+  color: #777;
+  font-size: 1.3em;
+  line-height: 150%;
+}
+.awesome .b-article--title {
+  font-size: 2em;
+  font-family: 'segoe ui', 'ubuntu', arial, sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+.awesome .b-article--nav {
+  line-height: 2em;
+}
 @media screen and (min-width: 480px) {
-  .awesome .b-page--section {
-    padding: 2em;
-  }
   .awesome .b-page--section > article {
     padding: 0 7%;
   }
@@ -850,39 +916,12 @@ a:hover .u {
   }
 }
 @media screen and (max-width: 768px) {
-  .awesome .b-page--section {
-    padding: 2em;
-  }
   .awesome .b-page--section > article {
     padding: 0;
   }
   .awesome .b-page--section .b-feature {
     margin: 0 1em 3em;
   }
-}
-.awesome-page--header hgroup {
-  padding: 10% 15%;
-  font-family: 'segoe ui light', 'ubuntu light', arial, sans-serif;
-  font-size: 3em;
-  font-weight: 300;
-  white-space: nowrap;
-}
-.awesome-page--header hgroup h1,
-.awesome-page--header hgroup h2 {
-  margin: 0;
-  font-size: 1em;
-  font-weight: inherit;
-  line-height: 1.2em;
-  color: #999;
-}
-.awesome-page--header hgroup h1 {
-  font-size: 1.12em;
-  color: #333;
-}
-.awesome-page--display {
-  margin: 1em 0 2em -0.5em;
-  padding: 2em 1em;
-  box-shadow: -1px 0 3px -2px;
 }
 .b-feature--group {
   padding-bottom: 7%;
