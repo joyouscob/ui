@@ -889,14 +889,18 @@ a:hover .u {
   color: #999;
   white-space: nowrap;
 }
-.awesome .b-article--header {
-  margin-top: 0.5em;
+.awesome .b-article {
+  color: #333;
+  font-size: 1.2em;
 }
-.awesome .b-article--header p {
+.awesome .b-article--header p,
+.awesome .b-article--details p {
   margin-right: 2em;
   color: #777;
-  font-size: 1.3em;
-  line-height: 150%;
+}
+.awesome .b-article--header p big,
+.awesome .b-article--details p big {
+  color: #333;
 }
 .awesome .b-article--title {
   font-size: 2em;
@@ -905,7 +909,11 @@ a:hover .u {
   color: #333;
 }
 .awesome .b-article--nav {
+  margin-top: -0.5em;
   line-height: 2em;
+}
+.awesome .b-article p {
+  line-height: 150%;
 }
 @media screen and (min-width: 480px) {
   .awesome .b-page--section > article {

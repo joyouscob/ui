@@ -151,7 +151,7 @@
 						<hgroup class="b-article--header offset2 span3">
 							<h3 class="b-article--title"><a href="#">Code Editors</a></h3>
 						</hgroup>
-						<nav class="b-article--nav b-nav span7">
+						<nav class="b-article--nav b-nav span6">
 							<ul class="b-nav--bar">
 								<li><a><span class="u">CodeMirror</span></a>
 								<li><a><span class="u">Ace</span></a>
@@ -159,8 +159,21 @@
 						</nav>
 					</div>
 					<div class="row-fluid">
-						<form class="offset2 span8">
-							<textarea id="code" name="code">
+						<div class="offset1 span4">
+							<div class="row-fluid">
+								<hgroup class="b-article--header offset3 span9">
+									<p><big>CodeMirror is a JavaScript component that provides a code editor in the browser.</big>
+								</hgroup>
+								<div class="b-article--details">
+									<p>CodeMirror is a code-editor component that can be embedded in Web pages. The core library provides only the editor component, no accompanying buttons, auto-completion, or other IDE functionality. It does provide a rich API on top of which such functionality can be straightforwardly implemented. See the add-ons included in the distribution, and the CodeMirror UI project, for reusable implementations of extra features.
+									<p>A rich programming API and a CSS theming system are available for customizing CodeMirror to fit your application, and extending it with new functionality.
+								</div>
+							</div>
+						</div>
+						<div class="span6">
+							<p>All of CodeMirror is released under a MIT-style license. To get it, you can download the latest release or the current development snapshot as zip files. To create a custom minified script file, you can use the compression API.
+							<p>CodeMirror can also be found on GitHub at marijnh/CodeMirror. If you plan to hack on the code and contribute patches, the best way to do it is to create a GitHub fork, and send pull requests.
+							<div><textarea id="code" name="code">
 .b-nav {
     &--list, &--bar {
         display:block;
@@ -197,7 +210,11 @@
 							    indentUnit:4, smartIndent:true,
 							  });
 							</script>
-						</form>
+							</div>
+							<p>Community discussion, questions, and informal bug reporting is done on the CodeMirror Google group. There is a separate group, CodeMirror-announce, which is lower-volume, and is only used for major announcements—new versions and such. These will be cross-posted to both groups, so you don't need to subscribe to both.
+							<p>Though bug reports through e-mail are responded to, the preferred way to report bugs is to use the GitHub issue tracker. Before reporting a bug, read these pointers. Also, the issue tracker is for bugs, not requests for help.
+							<p>When none of these seem fitting, you can simply e-mail the maintainer directly.
+						</div>
 					</div>
 				</div>
 				<hr>

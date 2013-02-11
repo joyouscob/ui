@@ -542,13 +542,15 @@
     .b-section {
     }
     .b-article {
-        &--header {
-            margin-top: 0.5em;
+        color: #333;
+        font-size: 1.2em;
+        &--header, &--details {
             p {
                 margin-right: 2em;
                 color: #777;
-                font-size: 1.3em;
-                line-height: 150%;
+                big {
+                    color: #333;
+                }
             }
         }
         &--title {
@@ -558,7 +560,11 @@
             color: #333;
         }
         &--nav {
+            margin-top:-0.5em;
             line-height:2em;
+        }
+        p {
+            line-height: 150%;
         }
     }
 }
