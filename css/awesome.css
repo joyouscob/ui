@@ -896,6 +896,7 @@ a:hover .u {
 .awesome .b-article--header p,
 .awesome .b-article--details p {
   margin-right: 2em;
+  line-height: 150%;
   color: #777;
 }
 .awesome .b-article--header p big,
@@ -913,7 +914,7 @@ a:hover .u {
   line-height: 2em;
 }
 .awesome .b-article p {
-  line-height: 150%;
+  line-height: 140%;
 }
 @media screen and (min-width: 480px) {
   .awesome .b-page--section > article {
