@@ -140,7 +140,7 @@
             margin-left:-2em;
             & > a {
                 display:block;
-                padding:0.5em 2em;
+                padding:1em 2em;
             }
         }
     }
@@ -199,7 +199,7 @@
     &--section {
 
         &s { /* Группа разделов */
-            
+
         }
     }
 
@@ -209,7 +209,7 @@
     &--article {
 
         &s { /* Группа статей */
-            
+
         }
     }
 
@@ -531,41 +531,63 @@
 
     .b-section, .b-article {
         &--title {
-            margin: 0;
-            font-size: 3em;
             font-family: 'segoe ui light', 'ubuntu light', arial, sans-serif;
             font-weight: 300;
-            color: #999;
             white-space: nowrap;
         }
     }
     .b-section {
+        &--title {
+            font-size: 3em;
+            color: #999;
+        }
     }
     .b-article {
         color: #333;
         font-size: 1.1em;
         &--header, &--details {
             p {
-                margin-right: 2em;
-                line-height: 150%;
-                color: #777;
+                color: #999;
                 big {
+                    font-size: inherit;
                     color: #333;
                 }
             }
         }
-        &--title {
-            font-size: 2em;
-            font-family: 'segoe ui', 'ubuntu', arial, sans-serif;
-            font-weight: 400;
-            color: #333;
+        &--header {
+            margin:0;
+            font-size:2em; line-height:1em;
+
         }
         &--nav {
-            margin-top:-0.5em;
-            line-height:2em;
+            padding: 0 2em;
+            font-size:1em; line-height:2em;
+        }
+        &--header, &--nav {
+            border-top:1px solid #e2e2e2; margin-top:-1px;
+        }
+        &--title {
+            display: block;
+            padding: 0.5em 1em;
+            font-family: 'segoe ui', 'ubuntu', arial, sans-serif;
+            font-weight: 400;
+        }
+        &--body {
+            background-color: #fff;
+            border-right: 1px;
+            -webkit-box-shadow: 0 0 0 1px #e2e2e2;
+            -moz-box-shadow: 0 0 0 1px #e2e2e2;
+            box-shadow: 0 0 0 1px #e2e2e2;
+        }
+        &--details, &--content {
+            margin: 1.2em 2em 2em;
+        }
+        &--details {
+        }
+        &--content {
         }
         p {
-            line-height: 140%;
+            line-height: 150%;
         }
     }
 }
@@ -817,5 +839,35 @@ p > .b-btn {
     }
     &--logout {
         padding-bottom:3em !important;
+    }
+}
+
+
+
+.b-modal {
+    position:relative; z-index:1;
+    top:auto; right:auto; left:auto;
+    max-width:100%;
+    margin:0 auto 1em;
+    box-shadow:inset 0 0 0 1px #aaa, inset 0 0 0 0.1em #f2f2f2, 0 1px 7px -2px rgba(0, 0, 0, 0.5), 0 0 0 0.67em #f2f2f2;
+    &--header {
+        padding:1.5em 2em;
+        background:#4183C4; color:#f2f2f2;
+        box-shadow:inset 0 2px 0 -1px #fff;
+        h1, h2, h3 {
+            margin:0; font-weight:400;
+        }
+    }
+    &--body {
+        padding:0.5em 2em;
+    }
+    &--footer {
+        padding:1em 2em 2em;
+    }
+    .b-btn {
+        display:inline-block;
+        padding:0.5em 1em;
+        background:#4183C4; color:#f2f2f2;
+        box-shadow:0 0 0 0.67em #f2f2f2;
     }
 }
