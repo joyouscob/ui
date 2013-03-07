@@ -21,6 +21,63 @@ module.directive('bGridview', function factory($compile) {
                         )
                     )(scope)
                 )
+
+                $(head).bind('mousedown', '.grip', function (e) {
+                    e.stopPropagation()
+                    var target= $(e.target)
+                    var sel= target.closest('td')
+                    var selWidth= sel.width()
+                    var sib, dir
+                    if (target.hasClass('l')) {
+                        dir='l'
+                        sib= sel.prev()
+                    }
+                    if (target.hasClass('r')) {
+                        dir='r'
+                        sib= sel.next()
+                    }
+                    var sibWidth= sib.width()
+                    var resize= function (offset) {
+                        if ('r' === dir) {
+                            offset= 0-offset
+                        }
+                        if (sel && !sel.hasClass('flex')) {
+                            sel.addClass('resized')
+                            sel.css({
+                                'width': selWidth+offset,
+                                'min-width': selWidth+offset,
+                                'max-width': selWidth+offset,
+                                'overflow':'hidden'
+                            })
+                        }
+                        if (sib && !sib.hasClass('flex')) {
+                            sib.addClass('resized')
+                            sib.css({
+                                'width': sibWidth-offset,
+                                'min-width': sibWidth-offset,
+                                'max-width': sibWidth-offset,
+                                'overflow':'hidden'
+                            })
+                        }
+                    }
+                    var start= e.clientX
+                    var area= $(e.target.ownerDocument.documentElement)
+                    area.css({
+                        '-webkit-user-select':'none'
+                    })
+                    area.on('mousemove.col-resize.datatable', function (e) {
+                        var offset= start - e.clientX
+                        resize(offset)
+                    })
+                    area.on('mouseup.col-resize.datatable', function (e) {
+                        var offset= start - e.clientX
+                        area.off('.col-resize.datatable')
+                        area.css({
+                            '-webkit-user-select':'initial'
+                        })
+                    })
+                })
+
                 var body
                 iE.append(
                     body= $compile(
@@ -46,7 +103,7 @@ module.directive('bGridviewCol', function factory($compile) {
                 iE.append(
                     e= $compile(
                         angular.element(
-                            $("<div class=\"table--col table--col-sortable\" ng-click=\"order.by=col.id; order.reverse=!order.reverse\" ng-class=\"{'sorted':order.by==col.id, 'reversed':order.by==col.id&&order.reverse}\">{{col.title}}</div>")
+                            $("<div class=\"table--col table--col-sortable\" ng-click=\"order.by=col.id; order.reverse=!order.reverse;\" ng-class=\"{'sorted':order.by==col.id, 'reversed':order.by==col.id&&order.reverse}\"><span class=\"grip l\"></span>{{col.title}}<span class=\"grip r\"></span></div>")
                         )
                     )(scope)
                 )
