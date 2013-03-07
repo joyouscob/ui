@@ -16,7 +16,7 @@ angular.module('awesome.directives').directive('bTreeview', function factory($co
                         angular.element(tpl)
                     )(scope)
                 )
-            };
+            }
         },
-    };
+    }
 })
