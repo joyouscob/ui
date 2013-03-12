@@ -3,10 +3,18 @@
  */
 var module= angular.module('awesome.directives')
 
+var options= {
+    class:'dashboard',
+};
+
 module.directive('bDashboard', function factory($compile) {
     return {
         restrict:'A',
+        scope: {
+            options:'='
+        },
         controller: function bDashboard($scope) {
+            var options= angular.extend({}, defaults, $scope.options);
 
             if (!$scope.hasOwnProperty('groups')) {
                 $scope.groups= {}
