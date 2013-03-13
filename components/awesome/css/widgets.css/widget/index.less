@@ -1,0 +1,45 @@
+.b-widget {
+    margin:1em; padding:0.5em;
+    background:#f2f2f2;
+    border:1px solid hsla(0,0%,0%,.25);
+    box-shadow:0 1px 3px hsla(0, 0%, 0%, .15);
+
+    &-head {
+        position:relative;
+        margin:-0.5em 0 0px; border:1px solid transparent; border-width:1px 0;
+        line-height:2em;
+        color:hsla(0,0%,0%,.80);
+    }
+
+    &-title {
+        font-size:15px; text-align:center;
+        color:inherit;
+    }
+
+    &-controls {
+        position:absolute; top:0; right:0;
+        & > button {
+            display:block; float:right;
+            width:28px;
+            font:inherit; line-height:1em;
+            margin:0;
+            padding:0.5em 0;
+            background:transparent;
+            border:0;
+            cursor:pointer;
+            & > i {
+                font-size:inherit; line-height:inherit;
+                color:hsla(0,0%,0%,.15);
+            }
+            &:first-child > i {
+                color:hsla(0,0%,0%,.75);
+            }
+        }
+    }
+
+    &-body {
+        margin:0; padding:0.5em 1em;
+        background:#fff;
+        box-shadow:0 0 0 1px hsla(0,0%,0%,.15);
+    }
+}
