@@ -1,4 +1,4 @@
-angular.module('b.directives', ['b.options']).directive('bButton', ['b', 'button', function factory(b, button) {
+angular.module('b.directives').directive('bButton', ['b', 'button', function factory(b, button) {
     return {
         restrict:'A',
         compile: function (el, attr) {
