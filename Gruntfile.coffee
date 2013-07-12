@@ -64,9 +64,9 @@ module.exports= (grunt) ->
                         debug: false
                 files: [{
                     expand: true
-                    cwd: '<%= pkg.build.awesome.partials.source %>'
-                    src: ['**/*.jade', '!**/layout.jade']
-                    dest: '<%= pkg.build.awesome.partials.target %>'
+                    cwd: '<%= pkg.build.awesome.templates.source %>'
+                    src: ['**/*.jade', '!**/layout.jade', '!**/mixin.jade']
+                    dest: '<%= pkg.build.awesome.templates.target %>'
                     ext: '.html'
                 }]
 

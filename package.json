@@ -39,7 +39,7 @@
         "source"    : "components/awesome/js",
         "target"    : "js"
       },
-      "partials": {
+      "templates": {
         "source"    : "components/awesome",
         "target"    : "./"
       }
