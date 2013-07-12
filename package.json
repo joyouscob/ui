@@ -35,6 +35,10 @@
         "source"    : "components/awesome",
         "target"    : "css"
       },
+      "js": {
+        "source"    : "components/awesome/js",
+        "target"    : "js"
+      },
       "partials": {
         "source"    : "components/awesome",
         "target"    : "./"
@@ -56,8 +60,9 @@
     "grunt": "latest",
     "grunt-contrib-clean": "latest",
     "grunt-contrib-watch": "latest",
+    "grunt-contrib-coffee": "latest",
     "grunt-contrib-copy": "latest",
     "grunt-contrib-jade": "latest",
-    "grunt-contrib-less": "latest",
+    "grunt-contrib-less": "latest"
   }
 }

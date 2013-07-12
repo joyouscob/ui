@@ -47,6 +47,16 @@ module.exports= (grunt) ->
                     dest: '<%= pkg.build.jquery.target %>'
                 }]
 
+        coffee:
+            awesome:
+                files: [{
+                    expand: true
+                    cwd: '<%= pkg.build.awesome.js.source %>'
+                    src: ['**/*.coffee']
+                    dest: '<%= pkg.build.awesome.js.target %>'
+                    ext: '.js'
+                }]
+
         jade:
             awesome:
                 options:
@@ -71,6 +81,9 @@ module.exports= (grunt) ->
                 }]
 
         watch:
+            coffee:
+                files: ['**/*.coffee']
+                tasks: ['coffee']
             jade:
                 files: ['**/*.jade']
                 tasks: ['jade']
@@ -81,9 +94,10 @@ module.exports= (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-watch'
 
+    grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-copy'
     grunt.loadNpmTasks 'grunt-contrib-jade'
     grunt.loadNpmTasks 'grunt-contrib-less'
 
-    grunt.registerTask 'default', ['copy', 'jade', 'less']
-    grunt.registerTask 'dev', ['copy', 'jade', 'less', 'watch']
+    grunt.registerTask 'default', ['copy', 'coffee', 'jade', 'less']
+    grunt.registerTask 'dev', ['default', 'watch']
