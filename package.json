@@ -1,6 +1,6 @@
 {
   "name": "awsm-ui", "version": "0.1.0",
-  "private": true,
+  "private": true, "license": "GPL",
 
   "scripts": {
     "install": "bower install",
