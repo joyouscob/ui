@@ -17,6 +17,10 @@
       "source"    : "bower_components/angular",
       "target"    : "js/libs/angular"
     },
+    "angularAnimate": {
+      "source"    : "bower_components/angular-animate",
+      "target"    : "js/libs/angular"
+    },
     "angularResource": {
       "source"    : "bower_components/angular-resource",
       "target"    : "js/libs/angular"

@@ -11,6 +11,11 @@ module.exports= (grunt) ->
                     dest: '<%= pkg.build.angular.target %>'
                 }, {
                     expand: true
+                    cwd: '<%= pkg.build.angularAnimate.source %>'
+                    src: ['**/*', '!**/*.json', '!**/*.md']
+                    dest: '<%= pkg.build.angular.target %>'
+                }, {
+                    expand: true
                     cwd: '<%= pkg.build.angularResource.source %>'
                     src: ['**/*', '!**/*.json', '!**/*.md']
                     dest: '<%= pkg.build.angular.target %>'

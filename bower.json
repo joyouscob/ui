@@ -4,6 +4,7 @@
   "main": "./css/awesome.css",
   "dependencies": {
     "angular": "latest",
+    "angular-animate": "latest",
     "angular-resource": "latest",
     "angular-route": "latest",
     "angular-i18n": "latest",
