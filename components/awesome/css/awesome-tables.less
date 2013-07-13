@@ -18,12 +18,42 @@
             &.flex {
                 width: 100%;
             }
+            &.l, &.left, &.text-left {
+                text-align: left;
+            }
+            &.c, &.center, &.text-center {
+                text-align: center;
+            }
+            &.r, &.right, &.text-right {
+                text-align: right;
+            }
         }
         & > th {
             background: #e2e2e2;
         }
         & > td {
             background: #f2f2f2;
+        }
+    }
+
+    .col {
+        position:relative;
+        &-sortable {
+            padding-right: 30px;
+            cursor: pointer;
+            &:before, &:after {
+                content: "\f0dc";
+                display: block;
+                position: absolute; top: 0; right: 0;
+                font-family: FontAwesome; font-weight: inherit;
+                color: #f9f9f9;
+            }
+            &:hover {
+                color: #333;
+                &:before, &:after {
+                    color: rgba(0,0,0,.3);
+                }
+            }
         }
     }
 }
