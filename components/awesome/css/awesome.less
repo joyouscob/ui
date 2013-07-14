@@ -1,3 +1,15 @@
+
+/**
+ * Bootstrap
+ */
+@import "../../../bower_components/bootstrap/less/bootstrap.less";
+
+/**
+ * Font
+ */
+@import "../../../bower_components/font-awesome/less/font-awesome.less";
+
+
 @b-app--padding-left: 2em;
 
 /*
@@ -8,7 +20,6 @@
     top:0; left:0;
     height:100%; width:100%;
     overflow:hidden;
-    .box-sizing(border-box);
 
     &--header, &--footer, &--view {
         position:absolute;
@@ -221,75 +232,75 @@
     }
 }
 
-.b-rich-control {
-    position:absolute; top:0; left:0; right:1.7em;
-    & > input {
-        display:block;
-        width:5*@fluidGridColumnWidth;
-        margin:0; padding:0.25em 0.5em 0.4em;
-        font:inherit;
-        font-size:inherit; line-height:0.8em;
-        color:#777;
-        &::-webkit-input-placeholder,
-        &::-moz-input-placeholder,
-        &::-ms-input-placeholder {
-            padding:0.3em 0;
-            color:#aaa;
-            transition:
-                color 0.3s ease;
-            -webkit-transition:
-                color 0.3s ease;
-            -webkit-transition:
-                color 0.3s ease;
-        }
-        background:#f2f2f2;
-        border:0; border-radius:0px; outline:1px auto transparent; .box-sizing(border-box);
-        box-shadow:
-            0 0 0 1px #d2d2d2,
-            0 0 0 0.65em #f9f9f9,
-            inset 0 0 7px -3px rgba(0, 0, 0, 0.2);
-        transition:
-            width 0.5s ease-out,
-            background 0.5s ease-out,
-            box-shadow 0.3s ease-out;
-        -webkit-transition:
-            width 0.5s ease-out,
-            background 0.5s ease-out,
-            box-shadow 0.3s ease-out;
-        -moz-transition:
-            width 0.5s ease-out,
-            background 0.5s ease-out,
-            box-shadow 0.3s ease-out;
-        position:relative; z-index:100507;
-        &:focus {
-            width:100%;
-            color:#333;
-            &::-webkit-input-placeholder,
-            &::-moz-input-placeholder,
-            &::-ms-input-placeholder {
-                color:#777;
-            }
-            background:#fff;
-
-            box-shadow:
-                0 0 0 1px #a2a2a2,
-                0 0 0 0.65em #f2f2f2,
-                inset 0 0 3px -2px black;
-            transition:
-                width 0.7s ease-out,
-                background 0.7s ease-out,
-                box-shadow 0.3s ease-out;
-            -webkit-transition:
-                width 0.7s ease-out,
-                background 0.7s ease-out,
-                box-shadow 0.3s ease-out;
-            -webkit-transition:
-                width 0.7s ease-out,
-                background 0.7s ease-out,
-                box-shadow 0.3s ease-out;
-        }
-    }
-}
+//.b-rich-control {
+//    position:absolute; top:0; left:0; right:1.7em;
+//    & > input {
+//        display:block;
+//        width:5*@fluidGridColumnWidth;
+//        margin:0; padding:0.25em 0.5em 0.4em;
+//        font:inherit;
+//        font-size:inherit; line-height:0.8em;
+//        color:#777;
+//        &::-webkit-input-placeholder,
+//        &::-moz-input-placeholder,
+//        &::-ms-input-placeholder {
+//            padding:0.3em 0;
+//            color:#aaa;
+//            transition:
+//                color 0.3s ease;
+//            -webkit-transition:
+//                color 0.3s ease;
+//            -webkit-transition:
+//                color 0.3s ease;
+//        }
+//        background:#f2f2f2;
+//        border:0; border-radius:0px; outline:1px auto transparent;
+//        box-shadow:
+//            0 0 0 1px #d2d2d2,
+//            0 0 0 0.65em #f9f9f9,
+//            inset 0 0 7px -3px rgba(0, 0, 0, 0.2);
+//        transition:
+//            width 0.5s ease-out,
+//            background 0.5s ease-out,
+//            box-shadow 0.3s ease-out;
+//        -webkit-transition:
+//            width 0.5s ease-out,
+//            background 0.5s ease-out,
+//            box-shadow 0.3s ease-out;
+//        -moz-transition:
+//            width 0.5s ease-out,
+//            background 0.5s ease-out,
+//            box-shadow 0.3s ease-out;
+//        position:relative; z-index:100507;
+//        &:focus {
+//            width:100%;
+//            color:#333;
+//            &::-webkit-input-placeholder,
+//            &::-moz-input-placeholder,
+//            &::-ms-input-placeholder {
+//                color:#777;
+//            }
+//            background:#fff;
+//
+//            box-shadow:
+//                0 0 0 1px #a2a2a2,
+//                0 0 0 0.65em #f2f2f2,
+//                inset 0 0 3px -2px black;
+//            transition:
+//                width 0.7s ease-out,
+//                background 0.7s ease-out,
+//                box-shadow 0.3s ease-out;
+//            -webkit-transition:
+//                width 0.7s ease-out,
+//                background 0.7s ease-out,
+//                box-shadow 0.3s ease-out;
+//            -webkit-transition:
+//                width 0.7s ease-out,
+//                background 0.7s ease-out,
+//                box-shadow 0.3s ease-out;
+//        }
+//    }
+//}
 
 /*
  * Фирстиль Осома
@@ -316,7 +327,6 @@
          */
         &--header {
             background:@b-wsm-app--header-bg;
-            .box-shadow(0 0 5px -1px rgba(0,0,0,.5));
             hgroup {
                 text-align:right;
                 margin-right:@b-app--padding-left;
@@ -363,7 +373,6 @@
          */
         &--footer {
             background:@b-wsm-app--footer-bg;
-            .box-shadow(0 0 3px -1px black);
             p {
                 margin:0 -0.5em;
                 color:#777;
@@ -379,7 +388,6 @@
          */
         &--view {
             background:@b-wsm-app--view-bg;
-            .box-shadow(inset 0 1px 3px -2px black);
         }
     }
 
@@ -440,40 +448,6 @@
         }
         &--footer {
             background:#f2f2f2;
-        }
-    }
-}
-@media screen and (min-width:@media-tablet--screen-min-width) {
-    .awesome {
-        .b-page {
-            &--section {
-                padding:2em;
-                & > article {
-                    padding:0 7%;
-                }
-                .b-feature {
-                    margin:2em 10% 20%;
-                }
-                hgroup {
-                }
-            }
-        }
-    }
-}
-@media screen and (max-width:768px) {
-    .awesome {
-        .b-page {
-            &--section {
-                padding:2em;
-                & > article {
-                    padding:0;
-                }
-                .b-feature {
-                    margin:0 1em 3em;
-                }
-                hgroup {
-                }
-            }
         }
     }
 }
@@ -639,7 +613,7 @@
     }
     &--primary + .b-btn[data-toggle=dropdown] {
         position:relative;
-        min-width:2em; min-height:2em; .box-sizing(border-box);
+        min-width:2em; min-height:2em;
         border-left:1px solid #e2e2e2;
         .caret {
             border-top-color:#e2e2e2;
