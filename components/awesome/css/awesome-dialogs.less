@@ -1,28 +1,59 @@
 .b-dialog {
     position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 100700;
-    overflow-x: hidden; overflow-y: hidden;
+    overflow-x: hidden; overflow-y: scroll;
     padding-top: 40px;
 
+    -webkit-user-select: none;
+       -moz-user-select: none;
+
     &--area {
-        position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-        background: rgba(255,255,255,.7);
+        position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+        background: rgba(255,255,255,.73);
     }
     &--main {
-        box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.9);
+        position: relative;
+        margin: 0 45px;
+        box-shadow: 0 2px 4px -3px rgba(0, 0, 0, 0.9);
     }
 
     &--head {
         padding: 15px;
         line-height: 20px;
         font-size: 14px;
-        color: #777;
+        color: #555;
         background: #e2e2e2;
+        & > i {
+            display: inline-block;
+            width: 15px;
+            margin-right: 10px;
+            text-align: center;
+        }
+        & > span {
+            font-weight: 700;
+        }
     }
+    &--acts {
+        float: right;
+        & > * {
+            margin: 0 5px 0 15px;
+        }
+    }
+
     &--body {
-        padding: 15px;
+        padding: 40px;
         background: #f2f2f2;
+        -webkit-user-select: text;
+           -moz-user-select: text;
+    }
+
+    &--tabs {
+        padding: 0 15px;
+        background: #e2e2e2;
+        border-bottom: 1px solid #fff;
     }
 }
+
+
 
 .animate .b-dialog.ng-enter,
 .animate .b-dialog.ng-leave {
