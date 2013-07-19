@@ -11,28 +11,19 @@
 @forms--input-focused--color:                  @colors--black;
 @forms--input-focused--background-color:       #fff;
 
-h1, h2, h3, h4, h5, h6 {
-    margin:1em 2em;
-}
-hr {
-    margin:3em 0;
-    border:0; border-top:0.1em solid darken(@white, 30%);
-}
 
 .b-btn, input, textarea, label, button {
-    display:inline-block; box-sizing:content-box;
-    width:auto; min-width:2.5em;
-    height:auto; min-height:2.5em;
-    margin:0.5em 0;
-    padding:0.5em 0.8em;
-    border:0;
-    font:inherit; line-height:1.5em;
-    text-align:left;
+    display:inline-block;
+    margin: 0;
+    padding: 5px 10px;
+    border: 0;
+    font: inherit; line-height: inherit;
+    text-align: left;
 }
 
 .b-btn, button {
-    padding:0.5em 1em;
-    background-color:ThreeDFace;
+    padding: 0.5em 1em;
+    background-color: ThreeDFace;
     box-shadow:0 0 0 0.1em ThreeDLightShadow;
     & + button {
         margin-left:0.5em;
@@ -44,6 +35,11 @@ hr {
     &:active {
         background-color:ThreeDDarkShadow;
         color:ButtonHighlight;
+    }
+    &-block {
+        display: block;
+        width: 100%;
+        text-align: center;
     }
 }
 
@@ -83,8 +79,8 @@ hr {
     position:relative;
 }
 
-input, textarea {
-    padding:0.85em 1em;
+input, select, textarea {
+    padding: 10px 15px;
     background:@forms--input--background-color;
     border:0; outline:none;
     color:@forms--input--color;
@@ -119,12 +115,12 @@ label {
     }
 }
 form {
-    display:block; overflow:visible;
-    margin:2em 1em; padding:0;
-    input, textarea {
-        display:block; box-sizing:border-box;
-        width:100%;
-        margin:0.8em 0;
+    display: block;
+    margin: 0; padding: 0;
+    select, input, textarea {
+        display: block;
+        width: 100%;
+        margin: 0;
         &:hover {
 
         }
@@ -154,12 +150,21 @@ form {
         }
     }
     button {
-        padding:0.8em 1em;
-        text-align:center;
+        margin: 0; padding: 10px 15px;
+        text-align: center;
         & + button {
-            margin-left:0.8em;
+            margin-left: 0.8em;
         }
     }
+}
+
+label.b-label {
+    margin: 15px 0 0;
+    padding: 0;
+}
+.b-input {
+    border: 1px solid #fff;
+    box-shadow: inset 1px 1px 3px -1px rgba(0, 0, 0, 0.37);
 }
 
 .b-well {
