@@ -1,0 +1,28 @@
+ul.nav-tabs {
+    padding: 0 15px;
+    border: 0; border-bottom: 1px solid #ccc;
+    -webkit-user-select: none;
+    & > li {
+        margin: -1px;
+        & > a, & > a:hover, & > a:focus {
+            margin: 0;
+            padding: 5px 10px;
+            border: 1px solid transparent; border-radius: 1px;
+            box-shadow: none;
+            color: #4082C4;
+            &:hover, &:focus {
+                background: rgba(242, 242, 242, 0.37);
+                color: #3169A0;
+            }
+        }
+        &.active {
+            & > a, & > a:hover, & > a:focus {
+                font-weight: 700;
+                border-color: #ccc;
+                border-bottom-color: transparent;
+                background: #f2f2f2;
+                color: #555;
+            }
+        }
+    }
+}
