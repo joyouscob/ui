@@ -4,7 +4,8 @@
 
   "scripts": {
     "install": "bower install",
-    "postinstall": "grunt",
+    "postinstall": "npm run-script build",
+    "build": "grunt",
     "start": "grunt dev"
   },
 
