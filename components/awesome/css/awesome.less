@@ -1,698 +1,114 @@
-
-/**
- * Bootstrap
- */
 @import "../../../bower_components/bootstrap/less/bootstrap.less";
-
-/**
- * Font
- */
 @import "../../../bower_components/font-awesome/less/font-awesome.less";
 
 
-@b-app--padding-left: 2em;
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    background: transparent;
+}
 
-/*
- * Параметризованная раскладка приложения
- */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+a {
+    display: inline-block;
+    color: #b2b2b2;
+    cursor: default;
+    text-decoration: none !important;
+
+    & u {
+        display: inline-block;
+        line-height: 100%;
+        text-decoration: none !important;
+        border-bottom: 1px dashed rgba(178, 178, 178, 0.73); margin-bottom: -1px;
+    }
+
+    &:hover {
+        color: #a2a2a2;
+        & u {
+            text-decoration: none !important;
+            border-bottom-color: rgba(162, 162, 162, 0.93);
+        }
+    }
+
+    &[href] {
+        color: #4082C4;
+        cursor: pointer;
+        & u {
+            border-bottom-color: rgba(64, 130, 196, 0.37);
+            border-bottom-style: solid;
+        }
+        &:hover {
+            color: #3169A0;
+            & u {
+                border-bottom-color: rgba(49, 105, 160, 0.73);
+            }
+        }
+    }
+}
+
+.container {
+    max-width: 100%;
+    padding: 0 15px;
+}
+
+/**
+ * Раскладка приложения
+ */
 .b-app {
-    position:absolute;
-    top:0; left:0;
-    height:100%; width:100%;
-    overflow:hidden;
+    position: relative;
+    width: 100%; height: 100%;
+    overflow-y: scroll;
 
-    &--header, &--footer, &--view {
-        position:absolute;
-        top:0; height:auto;
-        left:0; width:100%;
-    }
-
-    &--header, &--footer {
-
-    }
-
-    @b-app--header-font-size: 1em;
-    @b-app--header-line-height: 1.5em;
-    @b-app--header-unit: (
-        (@b-app--header-line-height / @b-app--header-font-size)
-    );
-    @b-app--header-height: 4em;
-    @b-app--header-padding: 1em;
-
-    /*
-     * Хидер приложения
-     */
-    &--header {
-        bottom:auto; z-index:5;
-        min-height:@b-app--header-height; height:@b-app--header-height; max-height:@b-app--header-height;
-        & > header {
-            display:block;
-            font-size:@b-app--header-font-size; line-height:@b-app--header-line-height;
-            padding:@b-app--header-padding;
-            hgroup, h1, h2, h3, h4, h5, h6 {
-                display:block;
-                margin:0; margin-left:-(0.05 / @b-app--header-font-size); // оптическая компенсация
-                font:inherit; line-height:inherit;
-                white-space:nowrap;
-                h1, h2, h3, h4, h5, h6 {
-                    display:inline-block; vertical-align:top;
-                    margin:0;
-                }
-            }
-            nav {
-            }
+    &--head {
+        position: absolute; top: 0; left: 0; z-index: 7;
+        width: 100%; height: 80px;
+        background: #fff;
+        > h1 {
+            margin: 0;
+            padding: 15px;
+            line-height: 20px;
+            font-size: 21px;
+            font-weight: 700;
+            border-bottom: 1px solid hsl(0, 0%, 87%);
         }
     }
 
-    @b-app--footer-font-size: 1em;
-    @b-app--footer-height: 2em;
-    @b-app--footer-line-height: 1.5em;
-    @b-app--footer-padding: 0.25em 1em;
-
-    /*
-     * Футер приложения
-     */
-    &--footer {
-        top:auto; bottom:0; z-index:3;
-        min-height:@b-app--footer-height; height:@b-app--footer-height; max-height:@b-app--footer-height;
-        & > footer {
-            display:block;
-            margin:0; padding:@b-app--footer-padding;
-            font-size:@b-app--footer-font-size; line-height:@b-app--footer-line-height;
-            h1, h2, h3, h4, h5, h6 {
-                margin:0; margin-left:-(0.05 / @b-app--footer-font-size); // оптическая компенсация
-                font:inherit; line-height:inherit;
-                white-space:nowrap;
-            }
-            p {
-                margin:0;
-            }
-            nav {
-            }
+    &--body {
+        position: relative;
+        width: 100%; min-height: 100%;
+        padding: 80px 0 0;
+        background: #fff;
+        &:before, &:after {
+            display: table; content: ' ';
+        }
+        &:after {
+            clear: both;
         }
     }
 
-    /*
-     * Экран приложения
-     */
-    &--view {
-        top:@b-app--header-height; bottom:@b-app--footer-height;
-        z-index:1;
-        overflow:scroll; overflow-x:auto;
+    &--side {
+        float: left;
+        position: relative;
+        width: 260px; height: 2000px;
+        background: #fff;
     }
 
-
-    &--section {
-        position:relative; height:200%;
-        &s{
-            position:relative; height:100%;
-            padding:0 2em;
-        }
-    }
-}
-
-.b-header {
-    &--nav {
-        &-bar {
-            margin:0; padding:0;
-            list-style:none;
-            & > li {
-                display:inline-block;
-                & > a {
-                    display:block;
-                    margin-right:1em;
-                }
-            }
-        }
-    }
-}
-
-.b-footer {
-    &--title {
-
-    }
-    &--img {
-        float:right; position:relative;
-        width:4em; height:4em;
-        top:-2em;
-        & > img {
-            width:100%; height:100%;
-        }
-    }
-    &--nav {
-        &-bar {
-            margin:0; padding:0;
-            list-style:none;
-            & > li {
-                display:inline-block;
-                & > a {
-                    display:block;
-                    margin-right:1em;
-                }
-            }
-        }
-    }
-}
-
-.b-page {
-
-    /*
-     * Хидер страницы
-     */
-    &--header {
-        width:100%; min-height:4em;
+    &--main {
+        position: relative;
+        margin-left: 260px;
+        padding: 0 30px;
+        //height: 3000px;
+        background: #f2f2f2;
     }
 
-    /*
-     * футер страницы
-     */
-    &--footer {
-        width:100%; min-height:1em;
-    }
-
-    &--nav {
-
-    }
-
-    /*
-     * Раздел на странице
-     */
-    &--section {
-
-        &s { /* Группа разделов */
-
-        }
-    }
-
-    /*
-     * Статья на странице
-     */
-    &--article {
-
-        &s { /* Группа статей */
-
-        }
-    }
-
-}
-
-.b-tabs {
-    &--list {
-        margin:0; padding:0;
-        list-style:none;
-        & > li {
-            & > a {
-                display:block;
-                padding:0.5em 1em 0.6em;
-                margin-left:-1em;
-            }
-            &.active > a {
-                background:#777;
-                color:#f2f2f2;
-                cursor:default;
-                .u {
-                    border-bottom-color:transparent;
-                }
-            }
-            &.list-header {
-                margin:2em 0 0.5em;
-                font-weight:600;
-                font-family:'segoe ui semibold', 'segoe ui', 'ubuntu', arial, sans-serif;
-                color:#333;
-            }
-        }
-    }
-    &--section, &--article {
-        &s {
-        }
-        display:none;
-        &.active {
-            display:block;
-        }
-    }
-}
-
-//.b-rich-control {
-//    position:absolute; top:0; left:0; right:1.7em;
-//    & > input {
-//        display:block;
-//        width:5*@fluidGridColumnWidth;
-//        margin:0; padding:0.25em 0.5em 0.4em;
-//        font:inherit;
-//        font-size:inherit; line-height:0.8em;
-//        color:#777;
-//        &::-webkit-input-placeholder,
-//        &::-moz-input-placeholder,
-//        &::-ms-input-placeholder {
-//            padding:0.3em 0;
-//            color:#aaa;
-//            transition:
-//                color 0.3s ease;
-//            -webkit-transition:
-//                color 0.3s ease;
-//            -webkit-transition:
-//                color 0.3s ease;
-//        }
-//        background:#f2f2f2;
-//        border:0; border-radius:0px; outline:1px auto transparent;
-//        box-shadow:
-//            0 0 0 1px #d2d2d2,
-//            0 0 0 0.65em #f9f9f9,
-//            inset 0 0 7px -3px rgba(0, 0, 0, 0.2);
-//        transition:
-//            width 0.5s ease-out,
-//            background 0.5s ease-out,
-//            box-shadow 0.3s ease-out;
-//        -webkit-transition:
-//            width 0.5s ease-out,
-//            background 0.5s ease-out,
-//            box-shadow 0.3s ease-out;
-//        -moz-transition:
-//            width 0.5s ease-out,
-//            background 0.5s ease-out,
-//            box-shadow 0.3s ease-out;
-//        position:relative; z-index:100507;
-//        &:focus {
-//            width:100%;
-//            color:#333;
-//            &::-webkit-input-placeholder,
-//            &::-moz-input-placeholder,
-//            &::-ms-input-placeholder {
-//                color:#777;
-//            }
-//            background:#fff;
-//
-//            box-shadow:
-//                0 0 0 1px #a2a2a2,
-//                0 0 0 0.65em #f2f2f2,
-//                inset 0 0 3px -2px black;
-//            transition:
-//                width 0.7s ease-out,
-//                background 0.7s ease-out,
-//                box-shadow 0.3s ease-out;
-//            -webkit-transition:
-//                width 0.7s ease-out,
-//                background 0.7s ease-out,
-//                box-shadow 0.3s ease-out;
-//            -webkit-transition:
-//                width 0.7s ease-out,
-//                background 0.7s ease-out,
-//                box-shadow 0.3s ease-out;
-//        }
-//    }
-//}
-
-/*
- * Фирстиль Осома
- */
-.awesome {
-
-    @b-wsm-app--header-bg: #f2f2f2;
-    @b-wsm-app--view-bg: white;
-    @b-wsm-app--footer-bg: #f2f2f2;
-
-    font-family: 'segoe ui', 'ubuntu', arial, sans-serif;
-
-    a {
-        font-weight:400;
-    }
-
-    /*
-     * Раскладка приложения на Осоме
-     */
-    .b-app {
-
-        /*
-         * Хидер Осома
-         */
-        &--header {
-            background:@b-wsm-app--header-bg;
-            hgroup {
-                text-align:right;
-                margin-right:@b-app--padding-left;
-                h1, h3 {
-                    font-size:0.5em; font-weight:300;
-                    color:#333;
-                    strong {
-                        font-weight:300;
-                        color:#333;
-                        border-bottom-color:#e2e2e2;
-                    }
-                }
-                h3 {
-                    color:#aaa;
-                }
-            }
-
-            &--nav {
-                nav {
-                    position:relative;
-                    margin-right:-20px;
-
-                    .b-rich-control {
-                        margin-left:-0.5em;
-                    }
-
-                    .b-header--nav-bar {
-                        position:relative; z-index:1;
-                        margin-right:5.7em;
-                        float:right;
-                    }
-
-                    .b-user-control {
-                        position:absolute;
-                        top:0; left:auto; right:-1em;
-                    }
-                }
-            }
-
-        }
-
-        /*
-         * Футер Осома
-         */
-        &--footer {
-            background:@b-wsm-app--footer-bg;
-            p {
-                margin:0 -0.5em;
-                color:#777;
-            }
-            abbr {
-                letter-spacing:0.2em;
-                margin-left:0.2em;
-            }
-        }
-
-        /*
-         * Экран Осома
-         */
-        &--view {
-            background:@b-wsm-app--view-bg;
-        }
-    }
-
-    .b-page {
-        &--header {
-            background:#f2f2f2;
-        }
-        //position:relative; height:300%;
-        &--nav-bar {
-            display:table; width:100%;
-            margin:0; padding:0;
-            white-space:nowrap;
-            & > li {
-                display:table-cell; width:16.6%;
-                & > a {
-                    display:block;
-                    margin-left:-0.5em;
-                    padding:0.25em 0.6em 0.25em;
-                    background:#fff;
-                    color:#777;
-                    .u {
-                        border-bottom-color:#e2e2e2;
-                    }
-                    &:hover {
-                        background:#f9f9f9;
-                        color:#333;
-                        .u {
-                            border-bottom-color:#a2a2a2;
-                        }
-                    }
-                }
-                //&:first-child a {
-                //    margin-left:-2em;
-                //    padding-left:2.1em;
-                //}
-                //&:last-child a {
-                //    margin-right:-2em;
-                //    padding-right:2.1em;
-                //}
-                &.active {
-                    & > a {
-                        background:#f2f2f2 !important;
-                        color:#333;
-                        cursor:default;
-                        .u {
-                            position:relative; top:0.05em;
-                            border-bottom-color:transparent;
-                        }
-                    }
-                }
-            }
-        }
-        &--section {
-            padding:2em;
-            & > article {
-                padding:0;
-            }
-        }
-        &--footer {
-            background:#f2f2f2;
-        }
-    }
-}
-
-.awesome-page--header {
-    hgroup {
-        padding:10% 15%;
-        font-family: 'segoe ui light', 'ubuntu', arial, sans-serif;
-        font-size:3em; font-weight:300;
-        white-space:nowrap;
-        h1, h2 {
-            margin:0;
-            font-size:1em; font-weight:inherit; line-height:1.2em;
-            color:#999;
-        }
-        h1 {
-            font-size:1.12em;
-            color:#333;
-        }
-    }
-}
-
-.awesome-page--display {
-    margin:1em 0 2em -0.5em;
-    padding:2em 1em;
-    box-shadow:-1px 0 3px -2px;
-    img {
-    }
-}
-
-
-.b-feature--group {
-    padding-bottom:7%; border-bottom:1px solid #e2e2e2;
-}
-.b-feature-group--sep-top, .b-feature-group--sep-bottom {
-    float:none; clear:both;
-    border-color:transparent;
-    border-top:1px solid #e2e2e2;
-}
-.b-feature-group--sep-bottom {
-    border-color:transparent;
-}
-
-.b-feature {
-    margin:0 1em 3em;
-    float:left;
-}
-.b-feature--title {
-    margin:0 0 0 -1em; padding-left:1em; border-bottom:1px solid rgba(0,0,0,.1);
-    font:17px/20px 'Segoe UI Semibold', 'ubuntu', arial, sans-serif; font-weight:400;
-}
-.b-feature--title > span {
-    display:inline-block; vertical-align:bottom;
-    margin-bottom:-1px;
-    padding-bottom:0.5em;
-    border-bottom:1px solid rgba(0,0,0,.5);
-}
-
-.b-feature > p {
-    padding-left:1px;
-}
-.b-feature--list {
-    margin:12px 0; padding:0;
-    list-style:none;
-}
-.b-feature--list > li {
-    margin:3px 0; padding-left:1em;
-}
-.b-feature--list > li:before {
-    content:'▪';
-    position:absolute; margin-left:-1em;
-    color:rgba(0,0,0,.7);
-}
-
-
-.dropdown {
-    position:relative;
-    &-menu {
-        position:absolute; top:2em; right:0;
-        display:none;
-        margin:-1px;
-        padding:0.7em;
-        background:#e2e2e2;
-        border: 1px solid #aaa; border-top-color:#fff;
-        border-radius:1px;
-        box-shadow: inset 0 0 0 3px #F2F2F2, 0 1px 7px -2px rgba(0, 0, 0, 0.5);
-        list-style:none;
-        &:before {
-            display:inline-block;
-            position:absolute;
-            content:'';
-            top:-0.5em; left:auto; right:0.6em;
-            margin-top:0px;
-            border-right:0.5em solid transparent;
-            border-bottom:0.5em solid #fff;
-            border-left:0.5em solid transparent;
-        }
-        & > li {
-            & > a {
-                display:block;
-                padding:0.4em 1em 0.5em;
-                background:transparent;
-                &:hover {
-                    color:#f2f2f2;
-                    background:#777;
-                    border-radius:0px;
-                    box-shadow: 0 0 0 3px #F2F2F2, inset 0 0 3px -1px rgba(0, 0, 0, 0.7);
-                    .u {
-                        border-bottom-color:#a2a2a2;
-                    }
-                }
-            }
-            & + li {
-                margin-top:-0.5em;
-            }
-            &.divider {
-                margin:0.4em 1em 1em;
-                height:0px;
-                border-top:1px solid #AAA;
-                box-shadow:0 0 0 0.3em rgba(255, 255, 255, 0.1);
-            }
-        }
-    }
-    &.open {
-        .dropdown-menu {
-            display:block;
-            }
-        }
-    }
-.caret {
-  position:absolute; top:50%; left:50%;
-  display:inline-block; vertical-align:middle;
-  width:0; height:0; margin:0;
-  margin-top:-0.15em; margin-left:-0.3em;
-  content:'';
-  border-top:   0.3em solid #777;
-  border-right: 0.3em solid transparent;
-  border-left:  0.3em solid transparent;
-
-}
-.b-btn {
-    display:inline-block;
-    margin:0;
-    //padding:0.45em 0.65em 0.55em 0.6em;
-    padding:0 0.65em 0 0.6em;
-    font:inherit; line-height:200%;
-    border:0; outline:none;
-    border-radius:0;
-    &--primary, &--primary + .b-btn[data-toggle=dropdown] {
-        background-color:#777;
-        color:#f2f2f2;
-        -webkit-transition:background-color 0, color 0;
-        &:hover {
-            background-color:#555;
-            color:#e2e2e2;
-            -webkit-transition:background-color 0, color 0;
-        }
-        &:active {
-            background-color:#333;
-            color:#c2c2c2;
-            -webkit-transition:background-color 0.3s ease, color 0.3s ease;
-        }
-    }
-    &--primary + .b-btn[data-toggle=dropdown] {
-        position:relative;
-        min-width:2em; min-height:2em;
-        border-left:1px solid #e2e2e2;
-        .caret {
-            border-top-color:#e2e2e2;
-        }
-        &:hover {
-            .caret {
-                border-top-color:#d2d2d2;
-            }
-        }
-        &:active {
-            .caret {
-                border-top-color:#b2b2b2;
-                -webkit-transition:border-top-color 0.3s ease;
-            }
-        }
-    }
-    .open &--primary + .b-btn[data-toggle=dropdown] {
-        background-color:#555;
-        -webkit-transition:background-color 0.3s ease, color 0.3s ease;
-        .caret {
-            -webkit-transition:border-top-color 0.3s ease;
-        }
-    }
-
-    &--large {
-        font-size:1.5em; font-weight:300;
-        font-family:'segoe ui light', 'ubuntu', arial, sans-serif;
-        white-space:nowrap;
-        padding:0 0.85em 0.1em 0.75em;
-    }
-}
-
-p > .b-btn {
-    margin-left:-0.6em;
-    &--large {
-        margin-left:-0.8em;
-    }
-}
-
-.b-user {
-    &-control {
-        display:block;
-        white-space:nowrap;
-        box-shadow:0 0 0 0.65em #f2f2f2;
-        & > a {
-            position:relative;
-            float:left;
-            box-shadow:0 0 0 1px rgba(229, 151, 0, 0);
-            img {
-            }
-        }
-        &--username {
-            margin-right:1px;
-            }
-    }
-}
-
-.b-user-control--menu {
-    &--username, &--logout {
-        color:#444;
-        .u {
-            border-bottom:1px solid #ddd !important;
-        }
-    }
-    &--username {
-        padding-top:3em !important;
-        .u {
-            margin-left:-0.025em;
-            font-size:2em;
-            line-height:120%;
-        }
-    }
-    &--role {
-        display:block;
-        font-size:100%; line-height:100%;
-        margin-top:0.2em; margin-left:0.05em;
-        margin-bottom:0.5em;
-    }
-    &--logout {
-        padding-bottom:3em !important;
+    &--foot {
+        background: #fff;
     }
 }

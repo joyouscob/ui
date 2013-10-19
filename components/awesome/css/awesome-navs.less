@@ -1,42 +1,3 @@
-a {
-    display: inline-block;
-    color: #b2b2b2;
-    cursor: default;
-    text-decoration: none !important;
-
-    & > u {
-        display: inline-block;
-        line-height: 100%;
-        text-decoration: none !important;
-        border-bottom: 1px dashed rgba(178, 178, 178, 0.73); margin-bottom: -1px;
-    }
-
-    &:hover {
-        color: #a2a2a2;
-        & > u {
-            text-decoration: none !important;
-            border-bottom-color: rgba(162, 162, 162, 0.93);
-        }
-    }
-
-    &[href] {
-        color: #4082C4;
-        cursor: pointer;
-        & > u {
-            border-bottom-color: rgba(64, 130, 196, 0.37);
-            border-bottom-style: solid;
-        }
-        &:hover {
-            color: #3169A0;
-            & > u {
-                border-bottom-color: rgba(49, 105, 160, 0.73);
-            }
-        }
-    }
-}
-
-
-
 .nav-list {
     & > li {
         & > a {
@@ -62,7 +23,7 @@ a {
                     font-weight: 700;
                     color: #555;
                     cursor: default;
-                    & > u {
+                    & u {
                         border-bottom-color: transparent;
                     }
                 }
@@ -79,7 +40,7 @@ a {
                 padding: 5px 15px;
                 font-size: 11px; line-height: 20px;
                 background: transparent !important;
-                & > u {
+                & u {
                     line-height: 12px;
                 }
             }
@@ -89,12 +50,12 @@ a {
         & > li {
             & > a {
                 color: #555;
-                & > u {
+                & u {
                     border-bottom-color: rgba(85, 85, 85, 0.37);
                 }
                 &:hover {
                     color: #333;
-                    & > u {
+                    & u {
                         border-bottom-color: rgba(85, 85, 85, 0.73);
                     }
                 }
