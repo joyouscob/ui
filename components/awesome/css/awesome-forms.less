@@ -383,3 +383,177 @@ table {
         margin-top:-1em;
     }
 }
+
+.btn-link {
+    color: #4082C4;
+    cursor: pointer;
+    &, &:hover, &:focus, &:active, & u {
+        text-decoration: none;
+    }
+    & u {
+        border-bottom: 1px dashed rgba(64, 130, 196, 0.37);
+    }
+    &:hover {
+        color: #3169A0;
+        & u {
+            border-bottom-color: rgba(49, 105, 160, 0.73);
+        }
+    }
+}
+
+
+
+/* Формы */
+
+.Input() {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    margin: -1px;
+    line-height: 20px;
+    font: inherit;
+    color: #555;
+    background: #fff;
+    border: 1px solid;
+    border-color: #fff #fff #fff #fff;
+    outline: none;
+}
+.InputLarge() {
+    padding: 11px 15px 9px;
+    font-size: 16px;
+}
+.InputSmall() {
+    padding: 3px;
+    line-height: 12px;
+    font-size: 11px;
+}
+
+.input { // Поле для ввода
+    .Input();
+    position: relative;
+    &, &:focus {
+        box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.21);
+    }
+
+    &-width-full {
+        width: 100%;
+    }
+    &-width-auto {
+        width: auto;
+    }
+    &-lg { // Поле большего размера
+        .InputLarge();
+    }
+    &-sm { // Поле меньшего размера
+        .InputSmall();
+    }
+
+    &:focus {
+        color: #333;
+    }
+
+    &.ng-valid, &.ng-invalid:not(.ng-invalid-required) {
+        z-index: 1;
+    }
+        &.ng-valid {
+            color: #357ebd;
+            border-color: rgba(82,168,236, .8);
+
+        }
+        &.ng-invalid:not(.ng-invalid-required) {
+            color: #b94a48;
+            border-color: rgba(185,74,72, .7);
+        }
+
+
+    &.dropdown {
+        & > .dropdown-menu {
+            position: absolute;
+        }
+
+    }
+}
+
+.Form() {
+    margin: -15px;
+    padding: 15px;
+    background: #f2f2f2;
+}
+.FormLegend() {
+    display: block;
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    //font-family: 'segoe ui semibold', 'segoe ui', arial;
+    //font-weight: 600;
+    font-size: 17px;
+    line-height: 20px;
+    color: #b2b2b2;
+    border: 0;
+    border-bottom: 1px solid #e2e2e2;
+}
+.FormLegendValid() {
+    color: #357EBD;
+    border-bottom-color: rgba(82, 168, 236, 0.37);
+}
+.FormLegendLarge() {
+    font-size: 21px;
+}
+.FormActsValid() {
+    color: #357EBD;
+    border-top-color: rgba(82, 168, 236, 0.37);
+}
+.FormInput() {
+    margin-bottom: 10px;
+}
+
+.form { // Форма
+    .Form();
+
+    .input { // Поле вормы
+        .FormInput();
+    }
+    .legend, legend {
+        .FormLegend();
+    }
+    &-lg { // Форма большего размера
+        .input { // Поле формы большего размера
+            .InputLarge();
+        }
+        .legend, legend {
+            .FormLegendLarge();
+        }
+        .btn {
+
+        }
+    }
+    &-acts {
+        margin-top: 20px;
+        padding: 10px 0;
+        border-top: 1px solid #e2e2e2;
+    }
+    &.ng-valid {
+        .legend, legend {
+            .FormLegendValid();
+        }
+        .form-acts {
+            .FormActsValid();
+        }
+    }
+}
+
+.form {
+    .btn {
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 1px;
+    }
+    .btn-primary {
+        opacity: 1;
+        &[disabled] {
+            color: #b2b2b2;
+            background-color: hsla(0, 0%, 73%, 0) !important;
+            border-color: hsla(0, 0%, 73%, 0.37) !important;
+        }
+    }
+}
