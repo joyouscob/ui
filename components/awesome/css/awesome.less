@@ -113,14 +113,18 @@ a {
         background: #fff;
     }
 
-
-    &--notifications {
-        position: fixed;
-        z-index: 100500;
-        width: 37%;
-        right: 0;
-        bottom: 0;
-        padding: 45px;
+    &--notification {
+        &s {
+            position: fixed; right: 0; bottom: 0; z-index: 100500;
+            min-width: 420px;
+            width: 37%;
+            height: auto;
+            max-height: 73%;
+            margin: 0 30px;
+            padding: 45px;
+            overflow-y: auto;
+            background-color: rgba(255, 255, 255, 0.73);
+        }
     }
 }
 
