@@ -134,23 +134,9 @@ app.factory '$app', (App, AppDialog, AppNotify) ->
 
 
 
-app.factory 'CurrentUser', ($resource) ->
-    $resource '/api/v1/user/:action', {},
-        login:
-            method: 'post'
-            params:
-                action: 'login'
-
-        logout:
-            method: 'post'
-            params:
-                action: 'logout'
 
 
-
-
-
-app.controller 'AppCtrl', (version, $app, $rootScope, $scope, $route, $location, $http, $window, CurrentUser, $log) ->
+app.controller 'AppCtrl', (version, $app, $rootScope, $scope, $route, $location, $log) ->
     console.log 'AppCtrl', $app
     $rootScope.app= new $app.App version, $rootScope, $log, console
     $rootScope.app.dialog= new $app.AppDialog $rootScope.app, $location, $route, $rootScope, $log, console
@@ -167,22 +153,3 @@ app.controller 'AppCtrl', (version, $app, $rootScope, $scope, $route, $location,
 
 app.controller 'ViewCtrl', ($scope, $rootScope, $route) ->
     console.log 'ViewCtrl'
-
-
-
-app.controller 'LoginAppDialogCtrl', ($rootScope, $scope, CurrentUser, $window) ->
-    console.log 'LoginAppDialogCtrl'
-
-    if not $rootScope.user
-        $rootScope.user= new CurrentUser
-
-    console.log 'CurrentUser', $scope.user
-    $scope.login= (loginForm) ->
-        console.log 'login', arguments
-        $scope.user.$login (user) ->
-            #user.pass= loginForm.password.$modelValue
-            $window.location.href= 'project/'
-            $scope.notify 'done', 'authentication'
-        , (err) ->
-            $scope.user.pass= ''
-            $scope.notify 'error', err
