@@ -163,16 +163,6 @@ app.controller 'AppCtrl', (version, $app, $rootScope, $scope, $route, $location,
 
     $rootScope.view= $rootScope.app
 
-    $scope.user= new CurrentUser
-
-    $scope.login= (loginForm) ->
-        $scope.user.$login (user) ->
-            user.pass= loginForm.password.$modelValue
-            $window.location.href= 'project/'
-        , (err) ->
-            $scope.user.pass= ''
-            $scope.notify 'error', err
-
 
 
 app.controller 'ViewCtrl', ($scope, $rootScope, $route) ->
@@ -180,5 +170,19 @@ app.controller 'ViewCtrl', ($scope, $rootScope, $route) ->
 
 
 
-app.controller 'LoginRouteDialogCtrl', ($scope) ->
-    console.log 'LoginRouteDialogCtrl'
+app.controller 'LoginAppDialogCtrl', ($rootScope, $scope, CurrentUser, $window) ->
+    console.log 'LoginAppDialogCtrl'
+
+    if not $rootScope.user
+        $rootScope.user= new CurrentUser
+
+    console.log 'CurrentUser', $scope.user
+    $scope.login= (loginForm) ->
+        console.log 'login', arguments
+        $scope.user.$login (user) ->
+            #user.pass= loginForm.password.$modelValue
+            $window.location.href= 'project/'
+            $scope.notify 'done', 'authentication'
+        , (err) ->
+            $scope.user.pass= ''
+            $scope.notify 'error', err
