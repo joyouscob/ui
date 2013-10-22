@@ -80,14 +80,18 @@ app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppD
 
                 if debug then debug.log('App#onLocationChangeSuccess: change to dialog route -', dialog, currentRoute)
 
+
                 if dialog == @overlay # openned dialog
-                    if debug then debug.log('App#onLocationChangeSuccess: openned dialog...', @, currentRoute.params)
-                    @show dialog, currentRoute.params
-                else
-                    if currentRoute.templateUrl # open dialog
+                    if debug then debug.log('App#onLocationChangeSuccess: openned dialog...', @overlay, currentRoute.params)
+                    @show dialog, currentRoute
+                else # open dialog
+                    if @overlay # hide openned dialog
+                        @templateUrl= null
+                    if currentRoute.templateUrl
                         @templateUrl= currentRoute.templateUrl
-                    if debug then debug.log('App#onLocationChangeSuccess: open dialog...', @, currentRoute.params)
-                    @show dialog, currentRoute.params
+                    @show dialog, currentRoute
+                    if debug then debug.log('App#onLocationChangeSuccess: open dialog...', @overlay, currentRoute.params)
+
 
                 #if app.route
                 if debug then debug.log('App#onLocationChangeSuccess: replace route...', currentRoute, app.route)
@@ -96,7 +100,7 @@ app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppD
             else
                 app.location= $location.path()
                 if @overlay # hide openned dialog
-                    if debug then debug.log('App#onLocationChangeSuccess: hide dialog...', @)
+                    if debug then debug.log('App#onLocationChangeSuccess: hide dialog...', @overlay)
                     @hide()
                     if app.route and $route.current and (app.route.name == $route.current.name)
                         if debug then debug.log('App#onLocationChangeSuccess: prevent route change...')
@@ -104,12 +108,16 @@ app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppD
 
         if debug then debug.groupEnd()
 
-    show: (type, params) ->
+    show: (type, route) ->
         @overlay= type
-        @tab= params.tab
+        @tab= route.params.tab
+        @route= route
 
     hide: () ->
         @overlay= null
+        @tab= null
+        @route= null
+        @templateUrl= null
 
 app.factory 'AppNotify', (AppService) -> class AppNotify extends AppService.AppNotify
     constructor: (app, $location, $route, $rootScope, debug) ->
