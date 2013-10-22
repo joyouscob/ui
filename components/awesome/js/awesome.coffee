@@ -1,5 +1,6 @@
 app= angular.module 'awesome', ['ngAnimate', 'ngResource', 'ngRoute']
 
+app.constant 'debug', undefined
 
 
 app.provider 'AppService', ->
@@ -17,9 +18,7 @@ app.provider 'AppService', ->
                 config.type= type
                 config
 
-        $get: () ->
-            console.log 'construct AppService', AppService
-            AppService
+        $get: () -> AppService
 
 
 
@@ -31,12 +30,10 @@ app.config ($routeProvider, AppServiceProvider) ->
 
 
 app.factory 'App', (AppService) -> class App extends AppService.App
-    constructor: (version, $rootScope, $log, debug) ->
+    constructor: (version, $rootScope, debug) ->
 
-        if debug then debug.groupCollapsed 'App constructor'
-        if debug then debug.log @, $rootScope
-        if debug then debug.log 'listen scope'
-        if debug then debug.groupEnd()
+        if debug then debug.groupCollapsed('App#constructor...', @)
+        if debug then debug.log('$rootScope', $rootScope)
 
         @version= version
 
@@ -46,53 +43,57 @@ app.factory 'App', (AppService) -> class App extends AppService.App
         @route= null
         $rootScope.$on '$routeChangeStart', (evt, route) =>
             if route.name
-                if $log
-                    $log.info 'App#onRouteChangeStart: change to named route -', route.name, route
+                if debug then debug.log('App#onRouteChangeStart: change to named route -', route.name, route)
                 @route= route
 
         @state= null
 
-app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppDialog
-    constructor: (app, $location, $route, $rootScope, $log, debug) ->
+        if debug then debug.groupEnd()
 
-        if debug then debug.groupCollapsed 'AppDialog#constructor...'
-        if debug then debug.log 'dialog', @
-        if debug then debug.log 'dialog app', app
-        if debug then debug.log '$rootScope', $rootScope
+app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppDialog
+    constructor: (app, $location, $route, $rootScope, debug) ->
+
+        if debug then debug.groupCollapsed('AppDialog#constructor...', @, app)
+        if debug then debug.log('$rootScope', $rootScope)
 
         @overlay= null
 
-        if debug then debug.log 'define scope properties...'
+        if debug then debug.log('define scope properties...')
 
         $rootScope.showViewDialog= (args...) =>
             @show args...
 
         $rootScope.hideViewDialog= () ->
-            $location.path (app.route and app.route.originalPath) or '/'
+            $location.path app.location or '/'
 
-        if debug then debug.log 'listen scope...'
+        if debug then debug.log('listen scope...')
 
         route= $route.current
         $rootScope.$on '$locationChangeSuccess', (evt) =>
-            if 'dialog' == $route.current.type
-                if $log
-                    $log.info 'App#onLocationChangeSuccess: change to dialog route -', $route.current.type
+            currentRoute= $route.current
+            if 'dialog' == currentRoute.type
 
-                if debug then debug.log 'location changed to dialog route', $route.current.params.dialog, $route.current
-                if debug then debug.log 'overlayed route', $rootScope.app.route
+                dialog= currentRoute.params.dialog or currentRoute.name
 
-                switch $route.current.params.dialog
-                    when 'login'
-                        if 'login' == @overlay # openned dialog
-                            console.log 'openned', @
-                            @show 'login', $route.current.params
-                        else
-                            console.log 'open', @
-                            @show 'login', $route.current.params
-                        $route.current= route
+                if debug then debug.log('App#onLocationChangeSuccess: change to dialog route -', dialog, currentRoute)
+
+                if dialog == @overlay # openned dialog
+                    if debug then debug.log('App#onLocationChangeSuccess: openned dialog...', @, currentRoute.params)
+                    @show dialog, currentRoute.params
+                else
+                    if currentRoute.templateUrl # open dialog
+                        @templateUrl= currentRoute.templateUrl
+                    if debug then debug.log('App#onLocationChangeSuccess: open dialog...', @, currentRoute.params)
+                    @show dialog, currentRoute.params
+
+                if route # prevent route change
+                    if debug then debug.log('App#onLocationChangeSuccess: replace route...', @, currentRoute, route)
+                    $route.current= route
+
             else
+                app.location= $location.path()
                 if @overlay # hide openned dialog
-                    console.log 'hide openned', @
+                    if debug then debug.log('App#onLocationChangeSuccess: hide dialog...', @)
                     @hide()
 
         if debug then debug.groupEnd()
@@ -105,11 +106,9 @@ app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppD
         @overlay= null
 
 app.factory 'AppNotify', (AppService) -> class AppNotify extends AppService.AppNotify
-    constructor: (app, $location, $route, $rootScope, $log, debug) ->
+    constructor: (app, $location, $route, $rootScope, debug) ->
 
-        if debug then debug.groupCollapsed 'AppNotify#constructor...'
-        if debug then debug.log 'notification', @
-        if debug then debug.log 'notification app', app
+        if debug then debug.groupCollapsed('AppNotify#constructor...', @, app)
         if debug then debug.log '$rootScope', $rootScope
 
         @notifications= []
@@ -136,11 +135,12 @@ app.factory '$app', (App, AppDialog, AppNotify) ->
 
 
 
-app.controller 'AppCtrl', (version, $app, $rootScope, $scope, $route, $location, $log) ->
-    console.log 'AppCtrl', $app
-    $rootScope.app= new $app.App version, $rootScope, $log, console
-    $rootScope.app.dialog= new $app.AppDialog $rootScope.app, $location, $route, $rootScope, $log, console
-    $rootScope.app.notify= new $app.AppNotify $rootScope.app, $location, $route, $rootScope, $log, console
+app.controller 'AppCtrl', (version, $app, $rootScope, $scope, $route, $location, debug) ->
+    if debug then debug.log('AppCtrl', $app, $rootScope)
+
+    $rootScope.app= new $app.App version, $rootScope, debug
+    $rootScope.app.dialog= new $app.AppDialog $rootScope.app, $location, $route, $rootScope, debug
+    $rootScope.app.notify= new $app.AppNotify $rootScope.app, $location, $route, $rootScope, debug
 
     $rootScope.app.ready= null
     $rootScope.app.error= null
@@ -151,5 +151,5 @@ app.controller 'AppCtrl', (version, $app, $rootScope, $scope, $route, $location,
 
 
 
-app.controller 'ViewCtrl', ($scope, $rootScope, $route) ->
-    console.log 'ViewCtrl'
+app.controller 'ViewCtrl', ($scope, $rootScope, $route, debug) ->
+    if debug then debug.log('ViewCtrl')
