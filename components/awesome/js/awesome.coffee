@@ -43,7 +43,11 @@ app.factory 'App', (AppService) -> class App extends AppService.App
         @route= null
         $rootScope.$on '$routeChangeStart', (evt, route) =>
             if route.name
-                if debug then debug.log('App#onRouteChangeStart: change to named route -', route.name, route)
+                if debug then debug.log('App#onRouteChangeStart: change to named route -', route.name)
+
+        $rootScope.$on '$routeChangeSuccess', (evt, route) =>
+            if route.name
+                if debug then debug.log('App#onRouteChangeSuccess: changed to named route -', route.namee)
                 @route= route
 
         @state= null
@@ -86,15 +90,17 @@ app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppD
                     if debug then debug.log('App#onLocationChangeSuccess: open dialog...', @, currentRoute.params)
                     @show dialog, currentRoute.params
 
-                if route # prevent route change
-                    if debug then debug.log('App#onLocationChangeSuccess: replace route...', @, currentRoute, route)
-                    $route.current= route
+                if debug then debug.log('App#onLocationChangeSuccess: replace route...', currentRoute, route)
+                $route.current= route
 
             else
                 app.location= $location.path()
                 if @overlay # hide openned dialog
                     if debug then debug.log('App#onLocationChangeSuccess: hide dialog...', @)
                     @hide()
+                    if app.route and $route.current and (app.route.name == $route.current.name)
+                        if debug then debug.log('App#onLocationChangeSuccess: prevent route change...')
+                        $route.current= app.route
 
         if debug then debug.groupEnd()
 
