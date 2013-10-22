@@ -47,7 +47,7 @@ app.factory 'App', (AppService) -> class App extends AppService.App
 
         $rootScope.$on '$routeChangeSuccess', (evt, route) =>
             if route.name
-                if debug then debug.log('App#onRouteChangeSuccess: changed to named route -', route.namee)
+                if debug then debug.log('App#onRouteChangeSuccess: changed to named route -', route.name)
                 @route= route
 
         @state= null
@@ -72,7 +72,6 @@ app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppD
 
         if debug then debug.log('listen scope...')
 
-        route= $route.current
         $rootScope.$on '$locationChangeSuccess', (evt) =>
             currentRoute= $route.current
             if 'dialog' == currentRoute.type
@@ -90,8 +89,9 @@ app.factory 'AppDialog', (AppService) -> class AppDialog extends AppService.AppD
                     if debug then debug.log('App#onLocationChangeSuccess: open dialog...', @, currentRoute.params)
                     @show dialog, currentRoute.params
 
-                if debug then debug.log('App#onLocationChangeSuccess: replace route...', currentRoute, route)
-                $route.current= route
+                #if app.route
+                if debug then debug.log('App#onLocationChangeSuccess: replace route...', currentRoute, app.route)
+                $route.current= app.route
 
             else
                 app.location= $location.path()
